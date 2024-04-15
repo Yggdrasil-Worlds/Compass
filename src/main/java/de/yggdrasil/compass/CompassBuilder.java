@@ -1,9 +1,14 @@
 package de.yggdrasil.compass;
 
 
+import kotlin.collections.ArrayDeque;
+import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 /**
@@ -11,18 +16,18 @@ import java.util.Set;
  */
 public class CompassBuilder {
 
-    private Set<PositionedCompassItem> items = null;
-    private String title = null;
+    private List<PositionedCompassItem> items = null;
+    private Component title = null;
     private CompassSize size = null;
 
     public CompassBuilder() {
-        items = Set.of();
+        items = new ArrayList<>();
     }
 
-    public CompassBuilder(String title, CompassSize size) {
+    public CompassBuilder(Component title, CompassSize size) {
         this.title = title;
         this.size = size;
-        items = Set.of();
+        items = new ArrayList<>();
     }
 
     /**
@@ -47,6 +52,13 @@ public class CompassBuilder {
      * @param title title to set
      */
     public void SetTitle(String title) {
+        this.title = Component.text(title);
+    }
+    /**
+     * Sets title of the {@link Compass}
+     * @param title title to set
+     */
+    public void SetTitle(Component title) {
         this.title = title;
     }
 
@@ -65,6 +77,6 @@ public class CompassBuilder {
     public @Nullable Compass Build() {
         if(items.isEmpty() || title == null || size == null)
             return null;
-        return new CompassImpl(size, title, items);
+        return new CompassImpl(size, title, items.stream().collect(Collectors.toUnmodifiableSet()));
     }
 }

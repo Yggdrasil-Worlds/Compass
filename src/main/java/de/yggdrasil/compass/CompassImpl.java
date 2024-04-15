@@ -1,6 +1,8 @@
 package de.yggdrasil.compass;
 
+import net.kyori.adventure.text.Component;
 import net.minestom.server.inventory.Inventory;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
@@ -9,7 +11,7 @@ import java.util.Set;
  */
 public class CompassImpl implements Compass{
     private final Inventory inventory;
-    public CompassImpl(CompassSize size, String title, Set<PositionedCompassItem> items) {
+    public CompassImpl(CompassSize size, Component title, Set<PositionedCompassItem> items) {
         inventory = new Inventory(size.Type, title);
         items.forEach(item -> {
             inventory.setItemStack(item.Slot(), item.CompassItem().Representation());
@@ -20,5 +22,15 @@ public class CompassImpl implements Compass{
             });
         });
 
+    }
+
+    @Override
+    public Component getTitle() {
+        return inventory.getTitle();
+    }
+
+    @Override
+    public @NotNull CompassSize getSize() {
+        return CompassSize.valueOf(inventory.getInventoryType());
     }
 }

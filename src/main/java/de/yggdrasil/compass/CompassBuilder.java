@@ -1,10 +1,14 @@
 package de.yggdrasil.compass;
 
-import net.minestom.server.inventory.InventoryType;
+
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
+
+/**
+ * Builder for {@link Compass}
+ */
 public class CompassBuilder {
 
     private Set<PositionedCompassItem> items = null;

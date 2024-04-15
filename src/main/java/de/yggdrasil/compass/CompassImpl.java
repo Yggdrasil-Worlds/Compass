@@ -4,8 +4,11 @@ import net.minestom.server.inventory.Inventory;
 
 import java.util.Set;
 
+/**
+ * Default implementation for the {@link Compass}
+ */
 public class CompassImpl implements Compass{
-    private Inventory inventory;
+    private final Inventory inventory;
     public CompassImpl(CompassSize size, String title, Set<PositionedCompassItem> items) {
         inventory = new Inventory(size.Type, title);
         items.forEach(item -> {

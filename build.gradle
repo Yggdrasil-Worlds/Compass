@@ -20,7 +20,7 @@ dependencies {
 publishing {
     repositories {
         maven {
-            name = "GithubPackages"
+            name = "GitHubPackages"
             url = "https://maven.pkg.github.com/Yggdrasil-Worlds/Compass"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")

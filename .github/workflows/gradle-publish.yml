@@ -32,9 +32,9 @@ jobs:
       uses: gradle/actions/setup-gradle@v3 # v3
       with:
         gradle-version: 8.7
-
+        
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradle build
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle

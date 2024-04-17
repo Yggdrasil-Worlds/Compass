@@ -3,8 +3,8 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'de.yggdrasil'
-version = '1.0-SNAPSHOT'
+group = 'de.yggdrasil.light'
+version = System.getenv("RELEASE_VERSION") ?: 'err'
 
 repositories {
     mavenCentral()
@@ -18,6 +18,12 @@ dependencies {
 }
 
 publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'Compass'
+            from components.java
+        }
+    }
     repositories {
         maven {
             name = "GitHubPackages"

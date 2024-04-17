@@ -33,7 +33,11 @@ jobs:
     - name: Change gradlew Permissions
       run: chmod +x gradlew
 
+    - name: Set RELEASE_VERSION environment variable
+      run: echo "RELEASE_VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
+
     - name: Publish to GitHub Packages
       run: ./gradlew publish
       env:
+        USERNAME: DrMondGnu
         GITHUB_TOKEN: ${{ secrets.PACKAGES_ACCESS_TOKEN }}

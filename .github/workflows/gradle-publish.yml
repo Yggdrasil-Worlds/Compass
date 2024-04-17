@@ -40,4 +40,4 @@ jobs:
       run: ./gradlew publish
       env:
         USERNAME: DrMondGnu
-        GITHUB_TOKEN: ${{ secrets.PACKAGES_ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GRADLE_GITHUB_TOKEN }}

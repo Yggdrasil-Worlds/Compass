@@ -1,12 +1,10 @@
 package de.yggdrasil.compass;
 
-import net.kyori.adventure.text.Component;
-import org.jetbrains.annotations.NotNull;
+import net.minestom.server.entity.Player;
 
 /**
  *
  */
 public interface Compass {
-    Component getTitle();
-    @NotNull CompassSize getSize();
+    void open(Player player);
 }

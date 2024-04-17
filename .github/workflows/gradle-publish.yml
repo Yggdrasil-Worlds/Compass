@@ -26,18 +26,16 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    - name: Setup Gradle 8.7
+    - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3 # v3
-      with:
-        gradle-version: 8.7
         
     - name: Build with Gradle
-      run: gradle build
+      run: ./gradlew build
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
-      run: gradle publish
+      run: ./gradlew publish
       env:
         GITHUB_ACTOR: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GRADLE_GITHUB_TOKEN }}

@@ -20,7 +20,7 @@ dependencies {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId = 'Compass'
+            artifactId = 'compass'
             from components.java
         }
     }

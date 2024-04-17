@@ -24,7 +24,6 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        cache: gradle
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3 # v3
@@ -38,5 +37,5 @@ jobs:
     - name: Publish to GitHub Packages
       run: ./gradlew publish
       env:
-        USERNAME: Invincible2211
+        GITHUB_USERNAME: Invincible2211
         GITHUB_TOKEN: ${{ secrets.GRADLE_GITHUB_TOKEN }}

@@ -25,19 +25,19 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Setup Gradle 
+    - name: Setup Gradle 8.7
       uses: gradle/actions/setup-gradle@v3 # v3
+      with:
+        gradle-version: 8.7
         
     - name: Build with Gradle
-      run: ./gradlew build
+      run: gradle build
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
-      run: ./gradlew publish
+      run: gradle publish
       env:
         GITHUB_ACTOR: ${{ github.actor }}
         GITHUB_TOKEN: ${{ secrets.GRADLE_GITHUB_TOKEN }}
